@@ -1,10 +1,42 @@
+// Функция для получения эмодзи по названию предприятия
 export function getFarmEmoji(name) {
-  if (name.includes('Сабиново')) return '🌾';
+  if (name.includes('Сабиново') && name.includes('Агрофирма')) return '🌾';
   if (name.includes('Пигуля')) return '🐄';
   if (name.includes('Столяренко')) return '🐑';
-  if (name.includes('Морозов')) return '🌾';
+  if (name.includes('Морозов')) return '🍓';
   if (name.includes('Артемьева')) return '🐑';
-  if (name.includes('Сабиновский')) return '🌾';
-  if (name.includes('птицефабрика»')) return '🐔';
+  if (name.includes('Сабиновский МК')) return '🥩';
+  if (name.includes('птицефабрика')) return '🐔';
+  if (name.includes('Сизова')) return '🥕';
+  if (name.includes('Котова') && !name.includes('Котов')) return '🌻';
+  if (name.includes('Колпаков С')) return '🌾';
+  if (name.includes('Слепцов')) return '🍯';
+  if (name.includes('Волкова И')) return '🥛';
+  if (name.includes('Ваганов')) return '🍎';
+  if (name.includes('Касумов')) return '🍉';
+  if (name.includes('Рудич')) return '🐮';
+  if (name.includes('Крылов')) return '🐟';
+  if (name.includes('Потапов А Н')) return '🌾';
+  if (name.includes('Волков В')) return '🐷';
+  if (name.includes('Снагин')) return '🦆';
+  if (name.includes('Мадатов')) return '🍅';
+  if (name.includes('Аветисян')) return '🐇';
+  if (name.includes('Васенина')) return '🫐';
+  if (name.includes('Потапова А С')) return '🌿';
+  if (name.includes('Аливасов')) return '🍆';
+  if (name.includes('Балабанов')) return '🍐';
+  if (name.includes('Комарова')) return '🌳';
+  if (name.includes('Колпаков А')) return '🌽';
+  if (name.includes('Демидова')) return '🧀';
+  if (name.includes('Васенин С')) return '🍇';
+  if (name.includes('Потапов А А')) return '🥔';
+  if (name.includes('Котов С')) return '🍗';
+  if (name.includes('Четвериков')) return '🏡';
+  if (name.includes('Курочкина')) return '🌺';
+  if (name.includes('Магомедов')) return '🥕';
+  if (name.includes('Муртазалиев')) return '🐝';
+  if (name.includes('Дьячкова')) return '🍓';
+  if (name.includes('Потапов С')) return '🫒';
+  if (name.includes('Васенин Р')) return '🐰';
   return '🚜';
 }
