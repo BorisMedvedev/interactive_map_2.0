@@ -144,10 +144,9 @@ body {
   border-radius: 0;
   font-weight: normal;
   font-size: 14px;
-  /* backdrop-filter: blur(3px); */
   z-index: 5;
-  pointer-events: none;
-  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+  pointer-events: none !important;
+  z-index: 999;
 }
 
 #detail-page {
@@ -167,12 +166,10 @@ body {
   border: none;
   color: #f9e7b3;
   font-size: 14px;
-  padding: 6px 20px;
+  padding: 15px 30px;
   border-radius: 0;
   margin-bottom: 20px;
   font-weight: bold;
-
-  /* box-shadow: 4px 4px 0 #142010; */
   cursor: pointer;
   transition: 0.1s;
   display: inline-flex;

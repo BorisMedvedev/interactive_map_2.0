@@ -15,6 +15,7 @@ const domElements = {
   backBtn: document.getElementById('back-to-main-btn'),
   productTel: document.getElementById('detail-tel'),
   productEmail: document.getElementById('detail-email'),
+  additionalInfo: document.getElementById('detail-additionalInfo'),
 
 };
 
