@@ -570,21 +570,6 @@ body {
 }
 
 /* ▶️ Очень малые экраны (<320px) — защита от «схлопывания» */
-@media (max-width: 375px) {
-  .farm-btn {
-    font-size: 11px;
-    padding: 9px;
-  }
-
-  .farm-description h1 {
-    font-size: 1.2rem;
-  }
-
-  .farm-description p,
-  .farm-meta {
-    font-size: 0.8rem;
-  }
-}
 
 /* ▶️ Поддержка горизонтальной ориентации на мобильных */
 @media (max-height: 500px) and (orientation: landscape) {
@@ -610,5 +595,21 @@ body {
   .farm-btn {
     max-width: 100%;
     flex: none;
+  }
+}
+
+@media (max-width: 375px) {
+  .farm-btn {
+    font-size: 11px;
+    padding: 9px;
+  }
+
+  .farm-description h1 {
+    font-size: 1.2rem;
+  }
+
+  .farm-description p,
+  .farm-meta {
+    font-size: 0.8rem;
   }
 }
