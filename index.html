@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>🌾 Карта АПК «ЛЕЖНЕВСКОГО РАЙОНА»</title>
+  <!-- ==================== YANDEX MAPS API ==================== -->
+  <!-- ВАЖНО: Замените 'ВАШ_API_КЛЮЧ' на ключ, полученный в Кабинете Разработчика Яндекса -->
+  <!-- Инструкция: https://yandex.ru/dev/jsapi-v2-1/doc/ru/#get-api-key -->
+  <script
+    src="https://api-maps.yandex.ru/2.1/?apikey=ВАШ_КЛЮЧ&lang=ru_RU"></script>
+  <script defer type="module" src="js/main.js"></script>
+  <link href="./css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <header class="header">
+
+    <h1 class="heder__title">🌾 Карта АПК «ЛЕЖНЕВСКОГО РАЙОНА»</h1>
+  </header>
+  <div id="app">
+
+    <!-- ГЛАВНАЯ СТРАНИЦА (Карта + Список) -->
+    <div id="main-page">
+
+      <div class="farm-sidebar">
+        <h2>
+          <span>🌱 АПК </span> «ЛЕЖНЕВСКОГО РАЙОНА»
+        </h2>
+        <div id="farm-buttons-container" class="farm-buttons">
+          <!-- Кнопки сгенерируются через JS -->
+        </div>
+
+      </div>
+      <div class="map-wrapper">
+        <!-- Контейнер для Яндекс.Карты -->
+        <div id="yandex-map"></div>
+        <div class="map-label">📍 кликните по метке → детали АПК</div>
+      </div>
+    </div>
+    <!-- СТРАНИЦА ДЕТАЛЕЙ (скрыта) -->
+    <div id="detail-page">
+      <button class="back-btn" id="back-to-main-btn">← НА ГЛАВНУЮ </button>
+      <div class="detail-content">
+        <div class="farm-photo">
+          <img id="detail-img" src="" alt="Фото хозяйства">
+        </div>
+        <div class="farm-description">
+          <h1 id="detail-title"></h1>
+          <p id="detail-desc"></p>
+          <div class="farm-meta">
+            <span>📍 <span id="detail-coords"></span></span>
+            <span id="detail-product"></span>
+          </div>
+          <p 👨‍🌾 семейное предприятие · работает с 1998 г.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
