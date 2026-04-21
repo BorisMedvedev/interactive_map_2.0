@@ -1,4 +1,3 @@
-// Возвращает эмодзи в зависимости от названия фермы
 export function getFarmEmoji(name) {
   if (name.includes('Сабиново')) return '🌾';
   if (name.includes('Пигуля')) return '🐄';
