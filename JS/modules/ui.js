@@ -1,6 +1,6 @@
 // DOM-элементы (будут переданы при инициализации)
 let mainPage, detailPage, farmButtonsContainer;
-let detailTitle, detailDesc, detailImg, detailCoordsSpan, productSpan, backBtn;
+let detailTitle, detailDesc, detailImg, detailCoordsSpan, productSpan, backBtn, productTel, productEmail;
 
 // Инициализация ссылок на элементы
 export function initUI(elements) {
@@ -13,6 +13,8 @@ export function initUI(elements) {
   detailCoordsSpan = elements.detailCoordsSpan;
   productSpan = elements.productSpan;
   backBtn = elements.backBtn;
+  productTel = elements.productTel;
+  productEmail = elements.productEmail;
 }
 
 // Отрисовка кнопок ферм в боковой панели
@@ -43,6 +45,8 @@ export function showDetailPage(farm) {
   detailImg.alt = farm.name;
   detailCoordsSpan.textContent = `${farm.coords[0].toFixed(4)}, ${farm.coords[1].toFixed(4)}`;
   productSpan.textContent = farm.product;
+  productTel.textContent = farm.phone;
+  productEmail.textContent = farm.email;
 
   mainPage.style.display = 'none';
   detailPage.style.display = 'flex';

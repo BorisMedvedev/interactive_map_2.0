@@ -12,7 +12,10 @@ const domElements = {
   detailImg: document.getElementById('detail-img'),
   detailCoordsSpan: document.getElementById('detail-coords'),
   productSpan: document.getElementById('detail-product'),
-  backBtn: document.getElementById('back-to-main-btn')
+  backBtn: document.getElementById('back-to-main-btn'),
+  productTel: document.getElementById('detail-tel'),
+  productEmail: document.getElementById('detail-email'),
+
 };
 
 // Инициализируем UI-модуль
