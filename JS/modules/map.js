@@ -42,7 +42,7 @@ function createCustomPlacemark(farm, onClick) {
 export function initMap(ymaps, center, zoom = 10) {
   yandexMap = new ymaps.Map('yandex-map', {
     center: center,
-    zoom: zoom,
+    zoom: 12,
     controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
   });
   return yandexMap;

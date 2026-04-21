@@ -19,7 +19,7 @@ const domElements = {
 initUI(domElements);
 
 // Центр карты (можно взять из первой фермы или задать вручную)
-const MAP_CENTER = [56.775647428867074, 40.88828161108394];
+const MAP_CENTER = [56.82254252681233, 40.85911659965104];
 
 // Обработчик клика по кнопке фермы (с боковой панели)
 function onFarmButtonClick(farmId) {
