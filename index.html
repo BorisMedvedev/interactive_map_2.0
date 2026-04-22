@@ -15,57 +15,87 @@
 </head>
 
 <body>
-  <header class="header">
+  <header class="main-header">
 
-    <h1 class="heder__title">🌾 Карта АПК «ЛЕЖНЕВСКОГО РАЙОНА»</h1>
+
+    <div class="container nav-search-row">
+      <!-- Основное меню: ГЛАВНАЯ | ТУРИСТИЧЕСКИЕ МАРШРУТЫ | ФЕСТИВАЛИ | О РАЙОНЕ | ПОИСК -->
+      <nav class="main-nav">
+        <img class="logo" src="./images/unnamed.png" alt="" width="40">
+        <ul>
+          <li><a href="#">ГЛАВНАЯ</a></li>
+          <li><a href="#">ТУРИСТИЧЕСКИЕ МАРШРУТЫ</a></li>
+          <li><a href="#">ФЕСТИВАЛИ</a></li>
+          <li><a href="#">О РАЙОНЕ</a></li>
+
+        </ul>
+      </nav>
+
+      <!-- Поле поиска (Поиск) — как на фото после разделителя "Поиск" -->
+      <div class="search-form">
+        <input type="text" placeholder="Поиск по сайту..." aria-label="Поиск">
+        <button type="submit"><i class="fas fa-magnifying-glass"></i>
+          Найти</button>
+      </div>
+    </div>
+
+    <!-- Блок быстрых ссылок: полностью повторяет структуру "1. Органы управления (иерархия)  
+         2. Администрация (детализированные контакты) 3. Отдел экономики и предпринимательства (бизнес-информация)" -->
+
+    <div class="header-decoration"></div>
   </header>
-  <div id="app">
 
-    <!-- ГЛАВНАЯ СТРАНИЦА (Карта + Список) -->
-    <div id="main-page">
+  <main>
+    <div id="app">
+      <h1 class="heder__title">Интерактивная Карта АПК «Лежневского
+        муниципального района»</h1>
 
-      <div class="farm-sidebar">
-        <h2>
-          <span>🌱 АПК </span> «ЛЕЖНЕВСКОГО РАЙОНА»
-        </h2>
-        <div id="farm-buttons-container" class="farm-buttons">
-          <!-- Кнопки сгенерируются через JS -->
-        </div>
+      <!-- ГЛАВНАЯ СТРАНИЦА (Карта + Список) -->
+      <div id="main-page">
 
-      </div>
-      <div class="map-wrapper">
-        <!-- Контейнер для Яндекс.Карты -->
-        <div id="yandex-map"></div>
-        <div class="map-label">📍 кликните по метке → детали АПК</div>
-      </div>
-    </div>
-    <!-- СТРАНИЦА ДЕТАЛЕЙ (скрыта) -->
-    <div id="detail-page">
-      <button class="back-btn" id="back-to-main-btn">← НА ГЛАВНУЮ </button>
-      <div class="detail-content">
-        <div class="farm-photo">
-          <img id="detail-img" src="" alt="Фото хозяйства">
-        </div>
-        <div class="farm-description">
-          <h1 id="detail-title"></h1>
-          <p id="detail-desc"></p>
-          <div class="farm-meta">
-            <span>📍 <span id="detail-coords"></span></span>
-            <span id="detail-product"></span>
+        <div class="farm-sidebar">
+          <h2>
+            Интерактивная Карта АПК «Лежневского муниципального района»
+          </h2>
+          <div id="farm-buttons-container" class="farm-buttons">
+            <!-- Кнопки сгенерируются через JS -->
           </div>
-          <div class="farm-meta__contacts">
-            <p id="detail-additionalInfo" class="farm-meta"></p>
+
+        </div>
+        <div class="map-wrapper">
+          <!-- Контейнер для Яндекс.Карты -->
+          <div id="yandex-map"></div>
+          <!-- <div class="map-label">📍 кликните по метке → детали АПК</div> -->
+        </div>
+      </div>
+      <!-- СТРАНИЦА ДЕТАЛЕЙ (скрыта) -->
+      <div id="detail-page">
+        <button class="back-btn" id="back-to-main-btn">← НА ГЛАВНУЮ </button>
+        <div class="detail-content">
+          <div class="farm-photo">
+            <img id="detail-img" src="" alt="Фото хозяйства">
+          </div>
+          <div class="farm-description">
+            <h1 id="detail-title"></h1>
+            <p id="detail-desc"></p>
             <div class="farm-meta">
-              <span>📞</span>
-              <p id="detail-tel"></p>
-              <p id="detail-email"></p>
+              <span>📍 <span id="detail-coords"></span></span>
+              <span id="detail-product"></span>
             </div>
-          </div>
+            <div class="farm-meta__contacts">
+              <p id="detail-additionalInfo" class="farm-meta"></p>
+              <div class="farm-meta">
+                <span>📞</span>
+                <p id="detail-tel"></p>
+                <p id="detail-email"></p>
+              </div>
+            </div>
 
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </main>
 </body>
 
 </html>

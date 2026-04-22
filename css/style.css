@@ -9,7 +9,6 @@
 body {
   background: #ffffff;
   min-height: 100vh;
-  padding: 16px;
 }
 
 .header {
@@ -17,27 +16,30 @@ body {
 }
 
 .heder__title {
+  margin-top: 15px;
+  margin-bottom: 15px;
   text-align: center;
+  font-size: 28px;
 }
 
 .container {
   display: flex;
   align-items: center;
-  max-width: 1300px;
+  max-width: 1360px;
+  width: 100%;
   margin: 0 auto;
   justify-content: center;
 }
 
 #app {
   margin: 0 auto;
-  width: 1300px;
+  max-width: 1360px;
   max-width: 100%;
-  height: 900px;
-  max-height: 80vh;
-  background: #fbf7e8;
+  width: 100%;
+  height: 90vh;
+  max-height: 90vh;
+  /* background: #fbf7e8; */
   border-radius: 0;
-  /* box-shadow: 0 20px 40px rgba(0, 20, 0, 0.5); */
-  overflow: hidden;
   position: relative;
 }
 
@@ -52,7 +54,7 @@ body {
   max-width: 450px;
   width: 100%;
   background: #03692a;
-  padding: 24px 16px;
+  padding: 20px 20px;
   display: flex;
   flex-direction: column;
   /* border-right: 1px solid #e6b450; */
@@ -63,9 +65,9 @@ body {
 .farm-sidebar h2 {
   color: #f9e7b3;
   font-weight: 500;
-  letter-spacing: 1px;
+  /* letter-spacing: 1px; */
   margin-bottom: 24px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   border-bottom: 1px dashed #e6b450;
   padding-bottom: 16px;
@@ -84,9 +86,9 @@ body {
   border: none;
   border-radius: 0;
   padding: 5px;
-  max-width: 190px;
+  max-width: 180px;
   width: 100%;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 400;
   color: #333;
   text-align: left;
@@ -271,9 +273,9 @@ body {
    ========================================================================== */
 
 /* ▶️ Большие экраны (1400px+) — центрирование и комфортные отступы */
-@media (min-width: 1400px) {
+@media (min-width: 1360px) {
   #app {
-    max-width: 1400px;
+    max-width: 1360px;
     margin: 0 auto;
   }
 }
@@ -595,7 +597,7 @@ body {
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 400px) {
   .farm-btn {
     font-size: 11px;
     padding: 9px;
@@ -609,4 +611,304 @@ body {
   .farm-meta {
     font-size: 0.8rem;
   }
+}
+
+/* ГЛАВНЫЙ ХЕДЕР — вся верхняя часть как на фото */
+.main-header {
+  background: #ffffff;
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); */
+  border-bottom: 1px solid #e2e8f0;
+  position: relative;
+  z-index: 100;
+}
+
+/* Верхняя строка: название / логотип */
+
+/* .site-title {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+} */
+
+/* .site-title i {
+  font-size: 2rem;
+  color: #2c6e2f;
+  background: #eef6ee;
+  padding: 8px;
+  border-radius: 50%;
+} */
+
+.site-title span {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2b5a3b 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Основная навигация + поиск в одной строке */
+.nav-search-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 0 12px 0;
+}
+
+/* Меню навигации (с разделителями) */
+.main-nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 6px;
+  align-items: center;
+}
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 6px;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.main-nav li {
+  position: relative;
+}
+
+.main-nav a {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #333;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+  display: inline-block;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+}
+
+.main-nav a:hover {
+  color: #2b6e3c;
+  background: #f0f9f0;
+}
+
+/* Разделители между пунктами (кроме последнего) */
+.main-nav li:not(:last-child)::after {
+  content: '|';
+  color: #cbd5e1;
+  margin-left: 6px;
+  font-weight: 300;
+  font-size: 1rem;
+  display: inline-block;
+}
+
+/* Форма поиска (стилизованное поле + кнопка) */
+.search-form {
+  display: flex;
+  align-items: center;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  /* border-radius: 48px; */
+  padding: 2px 2px 2px 20px;
+  transition: all 0.2s;
+}
+.search-form:focus-within {
+  border-color: #2b6e3c;
+  background: white;
+}
+.search-form input {
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  width: 180px;
+  outline: none;
+  font-weight: 400;
+  color: #1e293b;
+}
+.search-form input::placeholder {
+  color: #94a3b8;
+  font-weight: 400;
+}
+.search-form button {
+  background: #2b6e3c;
+  border: none;
+  /* border-radius: 40px; */
+  padding: 8px 18px;
+  color: white;
+  font-weight: 500;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.3px;
+}
+.search-form button i {
+  font-size: 0.85rem;
+}
+.search-form button:hover {
+  background: #1f5430;
+}
+
+/* Блок быстрых ссылок (органы управления, администрация, отдел экономики) 
+           как на фото — "1. Органы управления (иерархия) ..." */
+.quick-links {
+  background: #f9fbfd;
+  border-top: 1px solid #e9edf2;
+  border-bottom: 1px solid #e9edf2;
+  padding: 12px 0;
+  margin-top: 4px;
+}
+
+.quick-links .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: center;
+}
+
+.quick-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #1e4663;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+
+.quick-item i {
+  font-size: 1.2rem;
+  color: #3b7a4a;
+  width: 24px;
+  text-align: center;
+}
+
+.quick-item:hover {
+  color: #2b6e3c;
+}
+
+.quick-number {
+  font-weight: 700;
+  background: #eef2f5;
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  color: #1e3a5f;
+}
+
+/* декоративный разделитель (как отбивка после хедера) — для соответствия фото */
+.header-decoration {
+  height: 2px;
+  background: linear-gradient(90deg, #2b6e3c, #c2e0c6, #f3b33d);
+  width: 100%;
+}
+
+/* Адаптивность: мобильная версия */
+@media (max-width: 880px) {
+  .container {
+    padding: 0 16px;
+  }
+  .nav-search-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+  .main-nav ul {
+    justify-content: center;
+    gap: 4px;
+  }
+  .main-nav a {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+  .search-form {
+    align-self: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+  .search-form input {
+    width: 100%;
+  }
+  .quick-links .container {
+    justify-content: center;
+    gap: 18px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .quick-item {
+    width: 100%;
+  }
+  .site-title {
+    font-size: 1.35rem;
+    justify-content: center;
+    text-align: center;
+  }
+  .brand-area {
+    text-align: center;
+  }
+}
+
+@media (max-width: 580px) {
+  .main-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .main-nav li:not(:last-child)::after {
+    content: '';
+    margin: 0;
+  }
+  .main-nav a {
+    background: #f8fafc;
+    margin: 2px;
+    font-size: 0.85rem;
+  }
+  .quick-item {
+    font-size: 0.85rem;
+    gap: 8px;
+  }
+}
+
+/* небольшая эстетика для демо: фон страницы, отступ снизу (чтобы хедер выделялся) */
+.demo-content {
+  flex: 1;
+  background: #f1f5f9;
+}
+/* пустой placeholder для демонстрации – чтобы визуально отделить хедер от остального */
+.hero-placeholder {
+  max-width: 1280px;
+  margin: 32px auto;
+  padding: 0 24px;
+  color: #475569;
+}
+.hero-placeholder p {
+  background: white;
+  padding: 24px;
+  border-radius: 20px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  border: 1px solid #e2e8f0;
+}
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 0.8rem;
+  color: #5b6e8c;
+  border-top: 1px solid #e2e8f0;
+  background: #fff;
 }
