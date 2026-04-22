@@ -1,7 +1,7 @@
 import { getFarmEmoji } from './utils.js';
 
 let yandexMap = null;
-const placemarks = {};   // id -> метка
+const placemarks = {}; // id -> метка
 
 // Создание кастомной метки для одной фермы
 function createCustomPlacemark(farm, onClick) {
@@ -19,18 +19,22 @@ function createCustomPlacemark(farm, onClick) {
       transform: rotate(-10deg);
       color: #333;
       cursor: pointer;
-    ">${getFarmEmoji(farm.name)}</div>
+          ">${getFarmEmoji(farm.name)}</div>
   `);
 
-  const placemark = new ymaps.Placemark(farm.coords, {
-    hintContent: `<strong>${farm.name}</strong><br>${farm.description.substring(0, 80)}...`,
-    balloonContent: `<strong>${farm.name}</strong><br>${farm.description.substring(0, 80)}...`
-  }, {
-    iconLayout: layout,
-    iconShape: { type: 'Circle', coordinates: [20, 30], radius: 20 },
-    hideIconOnBalloonOpen: false,
-    zIndex: 100
-  });
+  const placemark = new ymaps.Placemark(
+    farm.coords,
+    {
+      hintContent: `<strong>${farm.name}</strong><br>${farm.description.substring(0, 80)}...`,
+      balloonContent: `<strong>${farm.name}</strong><br>${farm.description.substring(0, 80)}...`,
+    },
+    {
+      iconLayout: layout,
+      iconShape: { type: 'Circle', coordinates: [20, 30], radius: 20 },
+      hideIconOnBalloonOpen: false,
+      zIndex: 100,
+    },
+  );
 
   placemark.options.set('farmId', farm.id);
   placemark.events.add('click', () => onClick(farm.id));
@@ -39,18 +43,18 @@ function createCustomPlacemark(farm, onClick) {
 }
 
 // Инициализация карты
-export function initMap(ymaps, center, zoom = 11) {
+export function initMap(ymaps, center, zoom = 10) {
   yandexMap = new ymaps.Map('yandex-map', {
     center: center,
     zoom: 11,
-    controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
+    controls: ['zoomControl', 'typeSelector', 'fullscreenControl'],
   });
   return yandexMap;
 }
 
 // Добавление всех меток на карту
 export function addPlacemarks(farms, onPlacemarkClick) {
-  farms.forEach(farm => {
+  farms.forEach((farm) => {
     const placemark = createCustomPlacemark(farm, onPlacemarkClick);
     yandexMap.geoObjects.add(placemark);
     placemarks[farm.id] = placemark;
@@ -59,12 +63,12 @@ export function addPlacemarks(farms, onPlacemarkClick) {
 
 // Перелёт к ферме по ID
 export function flyToFarm(farmId, farms) {
-  const farm = farms.find(f => f.id === farmId);
+  const farm = farms.find((f) => f.id === farmId);
   if (!farm) return;
 
   yandexMap.setCenter(farm.coords, 12, {
     duration: 800,
-    timingFunction: 'ease-in-out'
+    timingFunction: 'ease-in-out',
   });
 
   const placemark = placemarks[farmId];
