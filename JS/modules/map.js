@@ -39,10 +39,10 @@ function createCustomPlacemark(farm, onClick) {
 }
 
 // Инициализация карты
-export function initMap(ymaps, center, zoom = 10) {
+export function initMap(ymaps, center, zoom = 11) {
   yandexMap = new ymaps.Map('yandex-map', {
     center: center,
-    zoom: 12,
+    zoom: 11,
     controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
   });
   return yandexMap;
