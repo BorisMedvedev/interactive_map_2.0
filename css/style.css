@@ -774,6 +774,7 @@ body {
   flex-wrap: wrap;
   gap: 28px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .quick-item {
@@ -902,12 +903,4 @@ body {
   border-radius: 20px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
   border: 1px solid #e2e8f0;
-}
-footer {
-  text-align: center;
-  padding: 24px;
-  font-size: 0.8rem;
-  color: #5b6e8c;
-  border-top: 1px solid #e2e8f0;
-  background: #fff;
 }
