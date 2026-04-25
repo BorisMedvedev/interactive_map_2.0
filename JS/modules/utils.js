@@ -1,42 +1,34 @@
-// Функция для получения эмодзи по названию предприятия
-export function getFarmEmoji(name) {
-  if (name.includes('Сабиново') && name.includes('Агрофирма')) return '🌾';
-  if (name.includes('Пигуля')) return '🐄';
-  if (name.includes('Столяренко')) return '🐑';
-  if (name.includes('Морозов')) return '🍓';
-  if (name.includes('Артемьева')) return '🐑';
-  if (name.includes('Сабиновский МК')) return '🥩';
-  if (name.includes('птицефабрика')) return '🐔';
-  if (name.includes('Сизова')) return '🥕';
-  if (name.includes('Котова') && !name.includes('Котов')) return '🌻';
-  if (name.includes('Колпаков С')) return '🌾';
-  if (name.includes('Слепцов')) return '🍯';
-  if (name.includes('Волкова И')) return '🥛';
-  if (name.includes('Ваганов')) return '🍎';
-  if (name.includes('Касумов')) return '🍉';
-  if (name.includes('Рудич')) return '🐮';
-  if (name.includes('Крылов')) return '🐟';
-  if (name.includes('Потапов А Н')) return '🌾';
-  if (name.includes('Волков В')) return '🐷';
-  if (name.includes('Снагин')) return '🦆';
-  if (name.includes('Мадатов')) return '🍅';
-  if (name.includes('Аветисян')) return '🐇';
-  if (name.includes('Васенина')) return '🫐';
-  if (name.includes('Потапова А С')) return '🌿';
-  if (name.includes('Аливасов')) return '🍆';
-  if (name.includes('Балабанов')) return '🍐';
-  if (name.includes('Комарова')) return '🌳';
-  if (name.includes('Колпаков А')) return '🌽';
-  if (name.includes('Демидова')) return '🧀';
-  if (name.includes('Васенин С')) return '🍇';
-  if (name.includes('Потапов А А')) return '🥔';
-  if (name.includes('Котов С')) return '🍗';
-  if (name.includes('Четвериков')) return '🏡';
-  if (name.includes('Курочкина')) return '🌺';
-  if (name.includes('Магомедов')) return '🥕';
-  if (name.includes('Муртазалиев')) return '🐝';
-  if (name.includes('Дьячкова')) return '🍓';
-  if (name.includes('Потапов С')) return '🫒';
-  if (name.includes('Васенин Р')) return '🐰';
-  return '🚜';
+// utils.js — вспомогательные функции
+
+/**
+ * Возвращает эмодзи по полю product фермы, а не по названию.
+ * Это надёжнее: не зависит от написания имён.
+ *
+ * БЫЛО: длинный список закомментированных if (name.includes(...))
+ *       + возвращал <i class="fa-wheat-alt"></i> как строку текста —
+ *       в шаблоне map.js она отображалась как текст, а не иконка.
+ *
+ * СТАЛО: чистая таблица соответствий product → эмодзи.
+ *         Возвращаем обычный символ эмодзи — он корректно
+ *         отображается в div-шаблоне Яндекс.Карт.
+ */
+export function getFarmEmoji(product) {
+  if (!product) return '🌾';
+
+  const p = product.toLowerCase();
+
+  if (p.includes('цвет')) return '🌸';
+  if (p.includes('мясо') || p.includes('мясн')) return '🥩';
+  if (p.includes('молок') || p.includes('молочн')) return '🥛';
+  if (p.includes('яйц')) return '🥚';
+  if (p.includes('овощ')) return '🥕';
+  if (p.includes('пчел') || p.includes('мёд') || p.includes('мед')) return '🍯';
+  if (p.includes('ягод')) return '🫐';
+  if (p.includes('фрукт')) return '🍎';
+  if (p.includes('зерн')) return '🌾';
+  if (p.includes('рыб')) return '🐟';
+  if (p.includes('кролик') || p.includes('кроликов')) return '🐇';
+  if (p.includes('птиц') || p.includes('курин')) return '🐔';
+
+  return '🌿'; // эмодзи по умолчанию
 }

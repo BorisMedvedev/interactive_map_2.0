@@ -523,7 +523,7 @@ export const farms = [
     description:
       'Кролиководство и переработка шкурки. Экологичное мясо кролика.',
     photo: './images/none.png',
-    product: 'Мясо',
+    product: 'Цветы',
     phone: '+7 (910) 991-08-97',
     email: 'ow888@yandex.ru',
     additionalInfo: 'Живые кролики, тушки, выделанные шкурки.',
