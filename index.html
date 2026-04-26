@@ -11,6 +11,7 @@
     src="https://api-maps.yandex.ru/2.1/?apikey=76d10f3a-6594-4483-8620-1091358b4d14&lang=ru_RU"></script>
 
   <!-- Font Awesome (иконки) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <!-- Наши стили -->
   <link href="./css/style.css" rel="stylesheet">
@@ -49,6 +50,9 @@
           </svg> Найти
         </button>
       </div>
+
+      <!-- Кнопка "На главную" — только мобильная -->
+      <a href="#" class="mobile-home-btn" data-page="main" aria-label="На главную"><i class="fa-solid fa-house"></i></a>
 
       <!-- Кнопка бургера (видна только на мобильных) -->
       <button class="burger-btn" id="burger-btn" aria-label="Открыть меню">
@@ -94,6 +98,7 @@
 
   <!-- Мобильное меню (бургер) -->
   <div class="mobile-menu" id="mobile-menu">
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Закрыть меню"><i class="fa-solid fa-xmark"></i></button>
     <nav>
       <ul class="mobile-nav-list">
         <li><a href="#" data-page="main"><svg class="icon"
@@ -242,6 +247,12 @@
               data-filter="Овощи">Овощная</a></li>
           <li><a href="#" class="footer-filter-link"
               data-filter="Пчеловодство">Медовая</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="Яйца">Яйца</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="Рыба">Рыбная</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="Зерно">Зерновая</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="Ягоды">Ягодная</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="Фрукты">Фруктовая</a></li>
+          <li><a href="#" class="footer-filter-link" data-filter="Цветы">Цветочная</a></li>
         </ul>
       </div>
 

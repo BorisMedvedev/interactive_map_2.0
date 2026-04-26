@@ -1,84 +1,51 @@
-// main.js — точка входа приложения. Связывает все модули вместе.
+// main.js — точка входа приложения
 
 import { farms } from './modules/data.js';
-import {
-  initMap,
-  addPlacemarks,
-  flyToFarm,
-  fitMapToViewport,
-  updatePlacemarks,
-} from './modules/map.js';
-import {
-  initUI,
-  renderFilteredButtons,
-  showDetailPage,
-  showMainPage,
-  bindEvents,
-  initFilterButtons,
-} from './modules/ui.js';
+import { initMap, addPlacemarks, flyToFarm, fitMapToViewport, updatePlacemarks } from './modules/map.js';
+import { initUI, renderFilteredButtons, showDetailPage, showMainPage, bindEvents, initFilterButtons } from './modules/ui.js';
 import { filterFarms } from './modules/filter.js';
 import { getPageContent } from './modules/pages.js';
 import { setSearchQuery, applySearch } from './modules/search.js';
 
-/**
- * ИЗМЕНЕНИЯ:
- * 1. updatePlacemarks теперь вызывается без allFarms как первого аргумента —
- *    он принимает только (filteredFarms, onClick). Сигнатура упрощена.
- *
- * 2. fullUpdate — единственная точка обновления: фильтр + поиск → кнопки + карта.
- *    Это гарантирует, что карта и список ВСЕГДА синхронны.
- *
- * 3. Бургер-меню: добавлены обработчики для мобильной навигации.
- */
-
-// DOM-элементы (собираем один раз, передаём в initUI)
 const domElements = {
-  mainPage:          document.getElementById('main-page'),
-  detailPage:        document.getElementById('detail-page'),
+  mainPage:             document.getElementById('main-page'),
+  detailPage:           document.getElementById('detail-page'),
   farmButtonsContainer: document.getElementById('farm-buttons-container'),
-  detailTitle:       document.getElementById('detail-title'),
-  detailDesc:        document.getElementById('detail-desc'),
-  detailImg:         document.getElementById('detail-img'),
-  detailCoordsSpan:  document.getElementById('detail-coords'),
-  productSpan:       document.getElementById('detail-product'),
-  backBtn:           document.getElementById('back-to-main-btn'),
-  productTel:        document.getElementById('detail-tel'),
-  productEmail:      document.getElementById('detail-email'),
-  additionalInfo:    document.getElementById('detail-additionalInfo'),
+  detailTitle:          document.getElementById('detail-title'),
+  detailDesc:           document.getElementById('detail-desc'),
+  detailImg:            document.getElementById('detail-img'),
+  detailCoordsSpan:     document.getElementById('detail-coords'),
+  productSpan:          document.getElementById('detail-product'),
+  backBtn:              document.getElementById('back-to-main-btn'),
+  productTel:           document.getElementById('detail-tel'),
+  productEmail:         document.getElementById('detail-email'),
+  additionalInfo:       document.getElementById('detail-additionalInfo'),
 };
 
 initUI(domElements);
 
 const MAP_CENTER = [56.82254252681233, 40.85911659965104];
 
-// ─── Главная функция обновления ───────────────────────────────────────────────
-// Применяет фильтр + поиск, затем обновляет и кнопки, и метки на карте.
-// Вызывается при любом изменении: смена фильтра, ввод в поиск.
 function fullUpdate() {
-  let filtered = filterFarms(farms);   // шаг 1: фильтр по категории
-  filtered = applySearch(filtered);    // шаг 2: поиск по тексту
-  renderFilteredButtons(farms, onFarmButtonClick); // кнопки в сайдбаре
-  updatePlacemarks(filtered, onPlacemarkClick);    // метки на карте
+  let filtered = filterFarms(farms);
+  filtered = applySearch(filtered);
+  renderFilteredButtons(farms, onFarmButtonClick);
+  updatePlacemarks(filtered, onPlacemarkClick);
 }
 
-// ─── Обработчики кликов ────────────────────────────────────────────────────────
-
-// Клик по кнопке фермы в сайдбаре → летим к ней на карте
 function onFarmButtonClick(farmId) {
-  // Если открыта детальная страница — сначала закрываем её
   if (domElements.detailPage.style.display !== 'none') {
     showMainPage(() => fitMapToViewport());
   }
   flyToFarm(farmId, farms);
 }
 
-// Клик по метке на карте → открываем детальную страницу
 function onPlacemarkClick(farmId) {
   const farm = farms.find((f) => f.id === farmId);
   if (farm) showDetailPage(farm);
 }
 
-// ─── Поиск ───────────────────────────────────────────────────────────────────
+// ─── Поиск — ИСПРАВЛЕН БАГ ───────────────────────────────────────────────────
 const searchInput  = document.querySelector('.search-form input');
 const searchButton = document.querySelector('.search-form button');
 
@@ -92,29 +59,28 @@ searchButton.addEventListener('click', (e) => {
   handleSearch();
 });
 
+// Мгновенное обновление при каждом изменении поля (включая очистку)
+searchInput.addEventListener('input', () => {
+  handleSearch();
+});
+
 searchInput.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
     e.preventDefault();
     handleSearch();
   }
-  // Для мгновенного поиска раскомментируй строку ниже:
-  // handleSearch();
 });
 
-// ─── Навигация: динамические страницы ────────────────────────────────────────
+// ─── Навигация ────────────────────────────────────────────────────────────────
 document.querySelectorAll('[data-page]').forEach((link) => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
     const pageId = e.currentTarget.dataset.page;
 
-    // Закрываем детальную страницу если открыта
     document.getElementById('detail-page').style.display = 'none';
-
-    // Удаляем старую динамическую страницу
     const old = document.querySelector('.dynamic-page-wrapper');
     if (old) old.remove();
 
-    // Закрываем бургер-меню при переходе (для мобильных)
     closeBurgerMenu();
 
     if (pageId === 'main') {
@@ -134,7 +100,7 @@ document.querySelectorAll('[data-page]').forEach((link) => {
   });
 });
 
-// ─── Бургер-меню (мобильная навигация) ───────────────────────────────────────
+// ─── Бургер-меню ─────────────────────────────────────────────────────────────
 const burgerBtn  = document.getElementById('burger-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 const overlay    = document.getElementById('burger-overlay');
@@ -143,7 +109,7 @@ function openBurgerMenu() {
   mobileMenu.classList.add('is-open');
   overlay.classList.add('is-visible');
   burgerBtn.classList.add('is-active');
-  document.body.style.overflow = 'hidden'; // запрещаем скролл страницы
+  document.body.style.overflow = 'hidden';
 }
 
 function closeBurgerMenu() {
@@ -161,10 +127,12 @@ burgerBtn.addEventListener('click', () => {
   }
 });
 
-// Закрытие по клику на затемнение
 overlay.addEventListener('click', closeBurgerMenu);
 
-// ─── Запуск приложения ────────────────────────────────────────────────────────
+// Крестик в мобильном меню
+document.getElementById('mobile-menu-close').addEventListener('click', closeBurgerMenu);
+
+// ─── Запуск ───────────────────────────────────────────────────────────────────
 function startApp() {
   ymaps.ready(() => {
     initMap(ymaps, MAP_CENTER, 12);
