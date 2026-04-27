@@ -1548,3 +1548,257 @@ svg.icon {
   margin-bottom: 20px;
 }
 
+
+/* ================================================================
+   ВЕРСИЯ 7.0 — НОВЫЕ СТИЛИ
+   ================================================================ */
+
+/* ─── Кнопки КФХ в маршрутах: два ряда как на главной ────────────── */
+/* Отменяем переопределение nowrap для контейнера маршрутов */
+#route-farm-buttons {
+  flex-wrap: wrap !important;
+  overflow-x: visible !important;
+  max-height: 280px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-soft) transparent;
+  padding-bottom: 0 !important;
+}
+#route-farm-buttons::-webkit-scrollbar { width: 4px; }
+#route-farm-buttons::-webkit-scrollbar-thumb { background: var(--accent-soft); border-radius: 4px; }
+#route-farm-buttons .route-farm-btn {
+  flex: 1 0 calc(50% - 4px);
+  min-width: 100px;
+  max-width: calc(50% - 4px);
+}
+@media (max-width: 767px) {
+  #route-farm-buttons {
+    flex-wrap: wrap !important;
+    overflow-x: visible !important;
+    max-height: 220px;
+  }
+  #route-farm-buttons .route-farm-btn {
+    flex: 1 0 calc(50% - 4px);
+    max-width: calc(50% - 4px);
+  }
+}
+@media (max-width: 380px) {
+  #route-farm-buttons .route-farm-btn {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+}
+
+/* ─── Инфо-карточки (органы, администрация, экономика) ──────────── */
+.info-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 20px 22px;
+  margin-bottom: 16px;
+  animation: fadeUp .35s ease both;
+}
+.info-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--accent-soft);
+}
+.info-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.info-contact-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.info-contact-row svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--accent-green);
+}
+.info-link {
+  color: var(--accent-green);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color .2s;
+}
+.info-link:hover { color: var(--accent-gold); text-decoration: underline; }
+
+/* ─── Страница Фестивали ─────────────────────────────────────────── */
+.festival-hero {
+  background: linear-gradient(135deg, var(--accent-green) 0%, #2d6e39 100%);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  margin-bottom: 28px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.festival-hero::before {
+  content: '';
+  position: absolute;
+  top: -30px; right: -30px;
+  width: 160px; height: 160px;
+  background: rgba(255,255,255,.07);
+  border-radius: 50%;
+}
+.festival-hero__badge {
+  display: inline-block;
+  background: rgba(255,255,255,.2);
+  color: #fff;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.festival-hero__title {
+  font-size: 1.55rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.25;
+}
+.festival-hero__desc {
+  font-size: .92rem;
+  opacity: .9;
+  line-height: 1.6;
+  max-width: 600px;
+}
+.festival-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+.festival-section-title__icon svg {
+  width: 20px; height: 20px;
+  color: var(--accent-gold);
+}
+.festival-albums-note {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+.festival-albums-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 28px;
+}
+.festival-album-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  background: var(--bg-surface);
+  transition: transform .2s, box-shadow .2s;
+  animation: fadeUp .4s ease both;
+}
+.festival-album-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+.festival-album-card__img-wrap {
+  position: relative;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+.festival-album-card__placeholder {
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--accent-green);
+  opacity: .6;
+  font-size: .8rem;
+}
+.festival-album-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity .25s;
+}
+.festival-album-card__overlay svg { width: 28px; height: 28px; }
+.festival-album-card:hover .festival-album-card__overlay { opacity: 1; }
+.festival-album-card__info {
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.festival-album-card__year {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+.festival-album-card__date {
+  font-size: .8rem;
+  color: var(--text-secondary);
+}
+.festival-album-card__link {
+  font-size: .82rem;
+  color: var(--accent-green);
+  font-weight: 600;
+  margin-top: 4px;
+}
+.festival-info-block {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  font-size: .9rem;
+}
+.festival-info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.festival-vk-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  font-size: .9rem;
+}
+.festival-vk-link svg { width: 16px; height: 16px; }
+
+/* ─── Адаптив фестивалей ─────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .festival-albums-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .festival-hero__title { font-size: 1.25rem; }
+  .festival-info-block { flex-direction: column; }
+}
+@media (max-width: 380px) {
+  .festival-albums-grid { grid-template-columns: 1fr; }
+}
+
